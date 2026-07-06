@@ -1,0 +1,41 @@
+.edu-card {
+  margin-top: 50px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 34px;
+  max-width: 640px;
+  position: relative;
+}
+
+.edu-card__node {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-leaf);
+  box-shadow: 0 0 0 5px rgba(124,255,178,0.12);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.edu-card__degree {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.edu-card__school {
+  margin-top: 8px;
+  color: var(--accent-data);
+  font-size: 0.95rem;
+}
+
+.edu-card__years {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}

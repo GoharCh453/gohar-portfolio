@@ -1,0 +1,202 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+.hero__glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(124,255,178,0.10) 0%, rgba(94,168,255,0.06) 45%, transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero__title {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-top: 18px;
+  color: var(--text);
+}
+
+.hero__title-accent {
+  background: linear-gradient(100deg, var(--accent-leaf), var(--accent-data));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__subtitle {
+  margin-top: 22px;
+  font-size: 1.08rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+.hero__highlight {
+  color: var(--accent-leaf);
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.btn {
+  padding: 13px 28px;
+  border-radius: 100px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  display: inline-block;
+}
+
+.btn--primary {
+  background: var(--accent-leaf);
+  color: #06110B;
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(124,255,178,0.25);
+}
+
+.btn--ghost {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--accent-data);
+  color: var(--accent-data);
+  transform: translateY(-2px);
+}
+
+.hero__meta {
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero__meta-sep { color: var(--border); }
+
+/* --- Signature SVG animation --- */
+.hero__svg {
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  overflow: visible;
+}
+
+.hero__outline {
+  stroke: var(--accent-leaf-dim);
+  stroke-width: 1.6;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2.4s ease forwards 0.2s;
+  opacity: 0.9;
+}
+
+.hero__vein {
+  stroke: var(--accent-data);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+
+.hero__vein--main {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: draw 1.4s ease forwards 0.9s;
+}
+
+.hero__vein--branch {
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+  animation: draw 1s ease forwards;
+}
+
+.hero__vein--branch.d1 { animation-delay: 1.3s; }
+.hero__vein--branch.d2 { animation-delay: 1.35s; }
+.hero__vein--branch.d3 { animation-delay: 1.5s; }
+.hero__vein--branch.d4 { animation-delay: 1.55s; }
+.hero__vein--branch.d5 { animation-delay: 1.7s; }
+.hero__vein--branch.d6 { animation-delay: 1.75s; }
+
+.hero__node {
+  fill: var(--accent-leaf);
+  opacity: 0;
+  animation: nodePulse 2.6s ease-in-out infinite;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes nodePulse {
+  0% { opacity: 0; r: 2; }
+  15% { opacity: 1; r: 5; }
+  50% { opacity: 0.55; r: 3.4; }
+  100% { opacity: 1; r: 4.5; }
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 36px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+}
+
+.hero__scroll span {
+  display: block;
+  width: 4px;
+  height: 8px;
+  background: var(--accent-leaf);
+  border-radius: 4px;
+  margin: 6px auto 0;
+  animation: scrollDot 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero__subtitle { margin-left: auto; margin-right: auto; }
+  .hero__actions { justify-content: center; }
+  .hero__meta { justify-content: center; }
+  .hero__art { order: -1; max-width: 280px; margin: 0 auto; }
+  .eyebrow { justify-content: center; }
+}
