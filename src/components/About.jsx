@@ -4,7 +4,7 @@ import { useReveal } from '../hooks/useReveal'
 import './About.css'
 
 const HIGHLIGHTS = [
-  { value: '5+', label: 'Applied AI/ML projects shipped' },
+  { value: '5+', label: 'Applied AI/ML projects built' },
   { value: '2022–26', label: 'BSCS, Islamia University Bahawalpur' },
   { value: 'CNN → Web', label: 'From model training to deployed UI' },
 ]
