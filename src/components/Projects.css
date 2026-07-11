@@ -6,28 +6,35 @@
 }
 
 .project-card {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --shine-x: 50%;
+  --shine-y: 50%;
   background: linear-gradient(180deg, var(--surface) 0%, var(--surface) 100%);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 32px;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  will-change: transform;
 }
 
 .project-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 100% 0%, rgba(124,255,178,0.06), transparent 55%);
+  background: radial-gradient(circle at var(--shine-x) var(--shine-y), rgba(124,255,178,0.14), transparent 45%);
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
   border-color: var(--accent-leaf-dim);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
 }
 
 .project-card:hover::before { opacity: 1; }

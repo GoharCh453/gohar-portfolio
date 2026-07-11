@@ -1,13 +1,17 @@
 import Reveal from './Reveal'
+import CountUp from './CountUp'
+import { useReveal } from '../hooks/useReveal'
 import './About.css'
 
 const HIGHLIGHTS = [
-  { value: '4+', label: 'Applied AI/ML projects shipped' },
+  { value: '5+', label: 'Applied AI/ML projects shipped' },
   { value: '2022–26', label: 'BSCS, Islamia University Bahawalpur' },
   { value: 'CNN → Web', label: 'From model training to deployed UI' },
 ]
 
 export default function About() {
+  const [statsRef, statsVisible] = useReveal()
+
   return (
     <section id="about">
       <div className="vein-track"></div>
@@ -35,14 +39,19 @@ export default function About() {
             </p>
           </Reveal>
 
-          <Reveal delay={2} as="div" className="about__stats">
+          <div
+            ref={statsRef}
+            className={`reveal reveal-delay-2 about__stats ${statsVisible ? 'visible' : ''}`}
+          >
             {HIGHLIGHTS.map((h) => (
               <div key={h.label} className="about__stat">
-                <span className="about__stat-value">{h.value}</span>
+                <span className="about__stat-value">
+                  <CountUp value={h.value} visible={statsVisible} />
+                </span>
                 <span className="about__stat-label">{h.label}</span>
               </div>
             ))}
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>

@@ -1,15 +1,8 @@
 import Reveal from './Reveal'
+import TiltCard from './TiltCard'
 import './Projects.css'
 
 const PROJECTS = [
-  {
-    icon: '🌿',
-    title: 'Leaf Detect & Cure',
-    subtitle: 'AI-Based Plant Disease Detection System',
-    description:
-      'A deep learning web application that detects plant diseases from leaf images using Convolutional Neural Networks. Predicts disease class, displays confidence scores, and surfaces disease information through an interactive interface — plus an AI chatbot and admin oversight panel.',
-    tech: ['Python', 'TensorFlow', 'Keras', 'CNN', 'OpenCV', 'Streamlit'],
-  },
   {
     icon: '🍃',
     title: 'Plant Disease Detection — MobileNetV2',
@@ -17,6 +10,22 @@ const PROJECTS = [
     description:
       'A lightweight, efficient plant disease detection system built with MobileNetV2 transfer learning. Classifies leaf diseases with high accuracy after preprocessing, resizing, and normalization — tuned for fast, near real-time predictions.',
     tech: ['Python', 'TensorFlow', 'Keras', 'MobileNetV2', 'OpenCV', 'Streamlit'],
+  },
+  {
+    icon: '👨\u200d🍳',
+    title: 'ChefAI',
+    subtitle: 'AI-Powered Recipe Generation Platform',
+    description:
+      'A full-stack app that uses Google Gemini to dynamically generate personalized recipes — complete with ingredients, instructions, and nutritional facts — from any dish a user types in. Includes a community "Explore" feed with trending cards, category filters, and social features like likes, bookmarks, and ratings that drive the trending feed.',
+    tech: ['React (Vite)', 'Django REST', 'Google Gemini API', 'JWT Auth', 'PostgreSQL'],
+  },
+  {
+    icon: '🎯',
+    title: 'AI Interview Coach',
+    subtitle: 'Premium Mock Interview Training Platform',
+    description:
+      'A full-stack mock interview platform where Google Gemini conducts realistic, role-specific interviews with dynamic follow-up questions, parses uploaded resumes to tailor questions, and evaluates every answer on technical accuracy, grammar, and communication — backed by a TensorFlow scoring engine and OpenCV-based webcam face monitoring. Wraps up with a polished ReportLab PDF scorecard.',
+    tech: ['React (Vite)', 'Django REST', 'Gemini API', 'TensorFlow', 'OpenCV', 'ReportLab'],
   },
   {
     icon: '🤖',
@@ -48,7 +57,7 @@ export default function Projects() {
 
         <div className="projects__grid">
           {PROJECTS.map((p, i) => (
-            <Reveal key={p.title} delay={(i % 4) + 1} as="article" className="project-card">
+            <TiltCard key={p.title} delay={(i % 4) + 1} className="project-card">
               <div className="project-card__icon">{p.icon}</div>
               <h3 className="project-card__title">{p.title}</h3>
               <p className="project-card__subtitle">{p.subtitle}</p>
@@ -58,7 +67,7 @@ export default function Projects() {
                   <span key={t}>{t}</span>
                 ))}
               </div>
-            </Reveal>
+            </TiltCard>
           ))}
         </div>
       </div>
